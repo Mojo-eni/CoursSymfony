@@ -1,0 +1,35 @@
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: #0eed7e;
+    background-image: linear-gradient(to right,#0eed7e 60%, #a751e6);
+    display: flex;
+}
+
+.headerDiv {
+    align-content: center;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+}
+html {
+    background-color: #a8eadf;
+    width: 100%;
+    height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4%;
+    background-color: #14ecb0;
+    text-align: center;
+    margin: auto 0;
+}
+
+.footerDiv {
+    position: relative;
+}
