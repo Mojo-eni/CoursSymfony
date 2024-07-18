@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+ Wish Détail
+{% endblock %}
+
+{% block main %}
+ <div class="detail-card">
+      <h2>{{ wish.libelle }}</h2>
+      {% if wish.statut == true %}
+       <img src="{{ asset('asset/icons/check-mark.png') }}">
+      {% else %}
+       <a href="{{ path('wish_detail_id_validate', {'id': wish.id}) }}"><img class="blink" src="{{ asset('asset/icons/question.png') }}"></a>
+      {% endif %}
+ </div>
+{% endblock %}
+

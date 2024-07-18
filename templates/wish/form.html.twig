@@ -1,0 +1,15 @@
+
+{{ form_start(form) }}
+<div class="form-create-wish">
+    <div class="form-group">
+        <label for="{{ field_name(form) }}">Make a wish </label>
+        <input class="text-input form-control blink" type="text"
+               value="{{ field_value(form.libelle) }}"
+               name="{{ field_name(form.libelle) }}"
+        >
+    </div>
+    <input class="send btn" type="submit" value='{{ button_label|default('Create') }}'>
+</div>
+{{ form_errors(form) }}
+{{ form_row(form._token) }}
+{{ form_end(form, { 'render_rest': false }) }}

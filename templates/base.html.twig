@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link rel="icon" href="../public/asset/icons/favicon.png">
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('asset/app.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
     {% endblock %}
 
     {% block javascripts %}
@@ -18,8 +21,16 @@
 <div class="container">
     <header class="header">
         {% block header %}
-            <div class="headerDiv">
-                <h1>BucketList</h1>
+            <img class="bucket rotating" src="{{ asset('asset/icons/logo.svg') }}" alt="bucket">
+            <div class="headerText">
+                <div class="headerTitle">
+                    <h2>BucketList</h2>
+                </div>
+                <div class="headerNav">
+                    <a class="navLink btn" href="http://bucketlist/public/">Home</a>
+                    <a class="navLink btn" href="http://bucketlist/public/wish">Wishes</a>
+                    <a class="navLink btn" href="http://bucketlist/public/about">About Us</a>
+                </div>
             </div>
         {% endblock %}
     </header>

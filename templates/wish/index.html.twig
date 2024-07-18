@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wishes{% endblock %}
+
+{% block main %}
+<h1>Add to the bucket!</h1>
+
+    {% include 'wish/form.html.twig' %}
+
+    {% if wishes == null  %}
+        <p>No wishes yet!</p>
+    {% endif %}
+
+    <div class="wish-list">
+    {% for wish in wishes  %}
+          <a href="{{ path('wish_detail_id', {'id': wish.id}) }}" class="wish-card">
+              <div class="wish-pic-container">
+                  <img src="{{ asset('asset/icons/shooting_star.gif') }}">
+              </div>
+              <div class="wish-text-container">
+                  <p>{{ wish.libelle|e }}</p>
+              </div>
+          </a>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
+
+
+

@@ -23,7 +23,8 @@ class Truc
     private $libelle;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
+     *
      */
     private $statut;
 

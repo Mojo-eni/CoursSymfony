@@ -1,35 +1,322 @@
+*{
+        font-family: "Electrolize", sans-serif;
+        font-style: normal;
+}
+
 .header {
     width: 100%;
     height: 100px;
     background-color: #0eed7e;
     background-image: linear-gradient(to right,#0eed7e 60%, #a751e6);
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 5px rgba(101, 255, 203, 0.8);
+    margin-bottom: 30px;
+}
+.headerText{
+    display: flex;
+    flex-direction: column;
 }
 
-.headerDiv {
+.headerTitle {
+    position: relative;
     align-content: center;
 }
 
-.container{
-    width: 100%;
-    height: 100%;
+.login-card{
+    background-color: #0eed7e;
+    border-radius: 10px;
+    width: fit-content;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 2px 2px 5px 5px rgba(101, 255, 203, 0.8);
 }
+
+.login-card h1{
+    width: 15%;
+    margin: auto;
+}
+
+.login-card .send{
+align-self: center;
+}
+
+.login-form{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+
+.text-input{
+    background-color: #0bffe7;
+    color: #b259ff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 5px rgba(101, 255, 203, 0.8);
+    margin-right: 2rem;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+}
+
+.login-inputs{
+    display: inline-flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.blink{
+    animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink{
+    25%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 0.1;
+    }
+    75%{
+        opacity: 0.5;
+    }
+}
+
+.headerNav{
+    margin-left: 5%;
+    margin-top: 1%;
+    position: relative;
+    display: inline-flex;
+    overflow: visible;
+    gap: 10px;
+}
+
+.navLink{
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+
+.btn {
+    color: #31302B;
+    background: #0eed7e;
+    padding: 5px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #b259ff;
+    -webkit-transition: all ease 0.8s;
+    -moz-transition: all ease 0.8s;
+    transition: all ease 0.8s;
+}
+.btn:hover {
+    box-shadow: inset 100px 0 0 0 rgba(167, 81, 230, 0.6);
+    color: #0bffe7;
+}
+
+
+.nyan {
+    /*transition: transform 330ms ease-in-out;*/
+    mask-image: linear-gradient(to left, #0eed7e 50%, transparent);
+}
+
+.nyan-container{
+    position: relative;
+    bottom: 50%;
+    width:fit-content;
+}
+
+.nyan-container:hover .nyan{
+    /*transform: translateX(100vw);*/
+    animation: nyanGo 5s ease-out infinite forwards;
+}
+
+@keyframes nyanGo {
+    0% {
+        opacity: 1;
+        transform: translate(0%, 0%) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(100vw, 50vh) rotate(360deg);
+    }
+}
+
+.bucket{
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.wish-card{
+    background-color: #d2dcd4;
+    width: fit-content;
+    margin: 20px 30px;
+}
+
+.wish-card:hover{
+    box-shadow: 0 0 5px 5px rgba(101, 255, 203, 0.8);
+}
+
+.wish-list{
+    background-image: linear-gradient(to right,rgba(210, 220, 212, 0.35),rgba(210, 220, 212, 0.6));
+    border-radius: 10px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.form-create-wish{
+    background-color: rgba(42, 232, 75, 0.4);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+    width: fit-content;
+}
+
+.detail-card{
+    background-color: #0eed7e;
+    border-radius: 10px;
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-card img{
+    width: 50px;
+    height: 50px;
+}
+
+.send{
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+    background-color: #0bffe7;
+    color: #b259ff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 5px rgba(101, 255, 203, 0.8);
+    cursor: pointer;
+}
+
+.pp-card{
+    background-color: #0eed7e;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.pp-container{
+    background-color: rgba(177, 193, 186, 0.49);
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.pp-container img{
+animation: scaleUp 2s ease-in-out infinite;
+}
+
+@keyframes scaleUp {
+    0% {
+        scale : 100%;
+    }
+    50% {
+        scale : 105%;
+    }
+    100% {
+        scale : 100%;
+    }
+}
+
+.description{
+    width: 220px;
+}
+
 html {
     background-color: #a8eadf;
-    width: 100%;
-    height: 100%;
+    background-image: linear-gradient(to left,#0eed7e 20%, #a751e6);
+
 }
 
 .footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 99%;
     height: 4%;
     background-color: #14ecb0;
     text-align: center;
-    margin: auto 0;
 }
 
 .footerDiv {
     position: relative;
+}
+
+
+.rotating {
+    animation: rotating 5s linear infinite;
+}
+
+.rotating:hover {
+    animation-delay: 0s, 2s;
+    animation-duration: 0.2s, 1s;
+    animation-name: rotating, flyoff, invisble;
+    animation-timing-function: cubic-bezier(0.2, -2, 0.8, 2), ease-out;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flyoff {
+    0% {
+        transform: translate(0%, 0%) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(80vw, 80vh) rotate(360deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(100vw, 100vh) rotate(420deg);
+        opacity: 0;
+    }
+}
+
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:active {
+    text-decoration: none;
 }
