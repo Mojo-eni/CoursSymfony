@@ -122,6 +122,11 @@ align-self: center;
     color: #0bffe7;
 }
 
+.form-login{
+    width: 50%;
+    margin: auto;
+}
+
 
 .nyan {
     /*transition: transform 330ms ease-in-out;*/
