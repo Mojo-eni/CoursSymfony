@@ -27,11 +27,14 @@
                     <h2>BucketList</h2>
                 </div>
                 <div class="headerNav">
-                    <a class="navLink btn" href="http://bucketlist/public/">Home</a>
-                    <a class="navLink btn" href="http://bucketlist/public/wish">Wishes</a>
-                    <a class="navLink btn" href="http://bucketlist/public/about">About Us</a>
+                    <a class="navLink btn" href="{{ path('home') }}">Home</a>
+                    <a class="navLink btn" href="{{ path('wish_list') }}">Wishes</a>
+                    <a class="navLink btn" href="{{ path('aboutUs') }}">About Us</a>
                 </div>
             </div>
+            {% if app.user %}
+                <a class="navLink btn log-out" href="{{ path('app_logout') }}">Log out</a>
+            {% endif %}
         {% endblock %}
     </header>
 

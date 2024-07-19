@@ -127,6 +127,9 @@ align-self: center;
     margin: auto;
 }
 
+.log-out{
+    float: right;
+}
 
 .nyan {
     /*transition: transform 330ms ease-in-out;*/
