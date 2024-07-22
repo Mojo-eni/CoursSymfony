@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -36,6 +38,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Truc::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $trucs;
+
+    public function __construct()
+    {
+        $this->trucs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,5 +131,40 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Truc>
+     */
+    public function getTrucs(): Collection
+    {
+        return $this->trucs;
+    }
+
+    public function addTruc(Truc $truc): self
+    {
+        if (!$this->trucs->contains($truc)) {
+            $this->trucs[] = $truc;
+            $truc->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTruc(Truc $truc): self
+    {
+        if ($this->trucs->removeElement($truc)) {
+            // set the owning side to null (unless already changed)
+            if ($truc->getUser() === $this) {
+                $truc->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->username;
     }
 }

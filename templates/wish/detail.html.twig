@@ -8,9 +8,13 @@
  <div class="detail-card">
       <h2>{{ wish.libelle }}</h2>
       {% if wish.statut == true %}
-       <img src="{{ asset('asset/icons/check-mark.png') }}">
+       <a href="{{ path('wish_detail_id_unvalidate', {'id': wish.id}) }}">
+        <img src="{{ asset('asset/icons/check-mark.png') }}" alt="check">
+       </a>
       {% else %}
-       <a href="{{ path('wish_detail_id_validate', {'id': wish.id}) }}"><img class="blink" src="{{ asset('asset/icons/question.png') }}"></a>
+       <a href="{{ path('wish_detail_id_validate', {'id': wish.id}) }}">
+        <img class="blink" src="{{ asset('asset/icons/question.png') }}" alt="not yet">
+       </a>
       {% endif %}
  </div>
 {% endblock %}

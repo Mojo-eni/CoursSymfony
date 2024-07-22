@@ -2,11 +2,22 @@
 {{ form_start(form) }}
 <div class="form-create-wish">
     <div class="form-group">
-        <label for="{{ field_name(form) }}">Make a wish </label>
+        <label for="{{ field_name(form.libelle) }}">Make a wish </label>
         <input class="text-input form-control blink" type="text"
+               id="{{ field_name(form.libelle) }}"
                value="{{ field_value(form.libelle) }}"
                name="{{ field_name(form.libelle) }}"
         >
+        <label for="{{ field_name(form.category) }}">Category </label>
+        <select class="text-input form-control blink"
+               id="{{ field_name(form.category) }}"
+               name="{{ field_name(form.category) }}"
+        >
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.label }}</option>
+            {% endfor %}
+        </select>
+        <input type="hidden" value="{{ app.user.id }}" name="{{ field_name(form.user) }}">
     </div>
     <input class="send btn" type="submit" value='{{ button_label|default('Create') }}'>
 </div>

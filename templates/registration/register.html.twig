@@ -3,15 +3,46 @@
 {% block title %}Register{% endblock %}
 
 {% block main %}
+{#<div class="login-card"#}
+{#        {{ form_start(registrationForm) }}#}
+{#            {{ form_row(registrationForm.username) }}#}
+{#            {{ form_row(registrationForm.plainPassword, {#}
+{#                label: 'Password'#}
+{#            }) }}#}
+{#            {{ form_row(registrationForm.agreeTerms) }}#}
+
+{#            <button type="submit" class="send btn">Register</button>#}
+{#        {{ form_end(registrationForm) }}#}
+{#    </div>#}
+
+<div class="login-card">
     <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <form class="login-form" action="{{ path('app_register') }}" method="post">
+    <div class="login-inputs">
+            <div>
+                <label for="{{ field_name(registrationForm.username) }}">Username</label>
+                <input class="text-input blink" type="text"
+                       id="{{ field_name(registrationForm.username) }}"
+                       name="{{ field_name(registrationForm.username) }}"
+                       value="{{ field_value(registrationForm.username) }}"
+                       required>
+            </div>
+            <div>
+                <label for="{{ field_name(registrationForm.plainPassword) }}">Password</label>
+                <input class="text-input blink" type="password"
+                       id="{{ field_name(registrationForm.plainPassword) }}"
+                       name="{{ field_name(registrationForm.plainPassword) }}"
+                       value="{{ field_value(registrationForm.plainPassword) }}"
+                       required>
+            </div>
+        </div>
+        <div>
+            <input style="margin-top: 10px" class="send btn" type="submit" value="Register">
+        </div>
+        <input type="hidden" name="{{ field_name(registrationForm._token) }}"
+               value="{{ field_value(registrationForm._token) }}"
+        >
+        <input type="hidden" name="_target_path" value="/">
+    </form>
+</div>
 {% endblock %}

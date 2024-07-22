@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Truc;
 use App\Form\TrucType;
+use App\Repository\CategoryRepository;
 use App\Repository\TrucRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,9 +19,11 @@ class TrucController extends AbstractController
 {
 
     private $trucRepository;
+    private $categoryRepository;
 
-    public function __construct(TrucRepository $trucRepository){
+    public function __construct(TrucRepository $trucRepository, CategoryRepository $categoryRepository){
         $this->trucRepository = $trucRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -38,13 +41,11 @@ class TrucController extends AbstractController
      */
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $categories = $this->categoryRepository->findAll();
         $task = new Truc();
-        $wishes = $this->trucRepository->findAll();
+        $wishes = $this->trucRepository->findBy(['user'=>$this->getUser()]);
 
         $form = $this->createForm(TrucType::class, $task);
-        if(!$wishes){
-            throw  $this->createNotFoundException(('No wishes found'));
-        }
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -57,6 +58,7 @@ class TrucController extends AbstractController
 
         return $this->render('wish/index.html.twig', [
             'wishes' => $wishes,
+            'categories' => $categories,
             'form' => $form->createView(),
         ]);
     }
@@ -84,9 +86,19 @@ class TrucController extends AbstractController
         $entityManager->persist($wish);
         $entityManager->flush($wish);
 
-        return $this->render('wish/detail.html.twig', [
-            'controller_name' => 'TrucController',
-            'wish' => $wish,
-        ]);
+        return $this->redirectToRoute('wish_list');
+    }
+
+    /**
+     * @Route("/detail/{id}/unvalidate", name="detail_id_unvalidate")
+     */
+    public function unvalidate($id, EntityManagerInterface $entityManager): Response
+    {
+        $wish = $this->trucRepository->find($id);
+        $wish->setStatut(false);
+        $entityManager->persist($wish);
+        $entityManager->flush($wish);
+
+        return $this->redirectToRoute('wish_list');
     }
 }

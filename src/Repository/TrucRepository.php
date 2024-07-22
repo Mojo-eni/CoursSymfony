@@ -39,6 +39,7 @@ class TrucRepository extends ServiceEntityRepository
         }
     }
 
+
 //    /**
 //     * @return Truc[] Returns an array of Truc objects
 //     */

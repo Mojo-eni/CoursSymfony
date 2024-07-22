@@ -14,8 +14,8 @@
     <div class="wish-list">
     {% for wish in wishes  %}
           <a href="{{ path('wish_detail_id', {'id': wish.id}) }}" class="wish-card">
-              <div class="wish-pic-container">
-                  <img src="{{ asset('asset/icons/shooting_star.gif') }}">
+              <div class="wish-pic-container" >
+                  <img class="{% if wish.statut %} done {% endif %}" src="{{ asset('asset/icons/shooting_star.gif') }}" alt="shooting star">
               </div>
               <div class="wish-text-container">
                   <p>{{ wish.libelle|e }}</p>

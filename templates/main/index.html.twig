@@ -4,23 +4,30 @@
 
 {% block main %}
     <div class="login-card">
-        <h1>Login</h1>
-        <form class="login-form" action="{{ path('app_login') }}" method="post">
-            <div class="login-inputs">
-                <div>
-                    <label for="username">Username</label>
-                    <input class="text-input blink" type="text" id="username" name="_username" required>
+        {% if app.user %}
+            <p>Welcome {{ app.user.userIdentifier }}, let's make some wishes come true!</p>
+        {% else %}
+            <h1>Login</h1>
+            <form class="login-form" action="{{ path('app_login') }}" method="post">
+                <div class="login-inputs">
+                    <div>
+                        <label for="username">Username</label>
+                        <input class="text-input blink" type="text" id="username" name="_username" required>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input class="text-input blink" type="password" id="password" name="_password" required>
+                    </div>
                 </div>
                 <div>
-                    <label for="password">Password</label>
-                    <input class="text-input blink" type="password" id="password" name="_password" required>
+                    <input class="send btn" type="submit" value="Log in">
                 </div>
-            </div>
-            <div>
-                <input class="send btn" type="submit" value="Log in">
-            </div>
-            <input type="hidden" name="_target_path" value="/wish">
-        </form>
+                <input type="hidden" name="_target_path" value="/">
+            </form>
+        {% endif %}
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
     </div>
     <div class="nyan-container">
             <img class="nyan" src="{{ asset('asset/icons/17xo.gif') }}">

@@ -21,20 +21,27 @@
 <div class="container">
     <header class="header">
         {% block header %}
-            <img class="bucket rotating" src="{{ asset('asset/icons/logo.svg') }}" alt="bucket">
-            <div class="headerText">
-                <div class="headerTitle">
-                    <h2>BucketList</h2>
-                </div>
-                <div class="headerNav">
-                    <a class="navLink btn" href="{{ path('home') }}">Home</a>
-                    <a class="navLink btn" href="{{ path('wish_list') }}">Wishes</a>
-                    <a class="navLink btn" href="{{ path('aboutUs') }}">About Us</a>
+            <div class="header-left"->
+                <img class="bucket rotating" src="{{ asset('asset/icons/logo.svg') }}" alt="bucket">
+                <div class="headerText">
+                    <div class="headerTitle">
+                        <div class="app-title"><h2>BucketList</h2></div>
+                    </div>
+                    <div class="headerNav">
+                        <a class="navLink btn" href="{{ path('home') }}">Home</a>
+                        <a class="navLink btn" href="{{ path('wish_list') }}">Wishes</a>
+                        <a class="navLink btn" href="{{ path('aboutUs') }}">About Us</a>
+                    </div>
                 </div>
             </div>
-            {% if app.user %}
-                <a class="navLink btn log-out" href="{{ path('app_logout') }}">Log out</a>
-            {% endif %}
+            <div>
+                {% if app.user %}
+                    <a class="navLink btn log-out" href="{{ path('app_logout') }}">Log out</a>
+                {% else %}
+                    <a class="navLink btn log-out" href="{{ path('app_logout') }}">Log in</a>
+                    <a class="navLink btn log-out" href="{{ path('app_register') }}">Register</a>
+                {% endif %}
+            </div>
         {% endblock %}
     </header>
 
@@ -49,7 +56,7 @@
     <footer class="footer">
         {% block footer %}
             <div class="footerDiv">
-                <p>ENI Software ©</p>
+                <p style="margin-bottom: 0">ENI Software ©</p>
             </div>
         {% endblock %}
     </footer>
