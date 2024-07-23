@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Truc;
 use App\Form\TrucType;
+use App\Helper\CensuratorService;
 use App\Repository\CategoryRepository;
 use App\Repository\TrucRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -39,7 +40,7 @@ class TrucController extends AbstractController
     /**
      * @Route("/", name="list")
      */
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, CensuratorService $censuratorService): Response
     {
         $categories = $this->categoryRepository->findAll();
         $task = new Truc();
@@ -49,12 +50,13 @@ class TrucController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $task->setLibelle($censuratorService->purify($task->getLibelle()));
+
             $entityManager->persist($task);
             $entityManager->flush($task);
 
             return $this->redirectToRoute('wish_list');
         }
-
 
         return $this->render('wish/index.html.twig', [
             'wishes' => $wishes,

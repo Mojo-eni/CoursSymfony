@@ -19,6 +19,10 @@ body{
     animation: bg-spin 3s linear infinite;
 }
 
+.spin-stop{
+    animation: bg-spin linear;
+}
+
 @keyframes bounce2 {
     0%, 40%, 60%, 100% {transform: translateY(0);}
     15% {transform: translateY(-30px);}

@@ -16,8 +16,9 @@
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </head>
-<body>
 
+<body class="{% if status_code  %} spin-stop {% endif %}">
+{{ status_code }}
 <div class="container">
     <header class="header">
         {% block header %}
